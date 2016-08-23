@@ -1,11 +1,11 @@
-import { Component, ContentChildren, Input, Output, EventEmitter, QueryList, OnInit, AfterContentInit } from 'angular2/core';
+import { Component, ContentChildren, Input, Output, EventEmitter, QueryList, OnInit, AfterContentInit } from '@angular/core';
 import { Ng2WizardTab } from './ng2-wizard-tab.component';
 import { Ng2WizardStep } from './ng2-wizard-step.component';
 import { INg2WizardConfig } from './ng2-wizard.config';
  
 @Component({
     selector: 'ng2-wizard',
-    templateUrl: './app/ng2-wizard/ng2-wizard.component.html'
+    templateUrl: './ng2-wizard.component.html'
 })
 export class Ng2Wizard implements OnInit, AfterContentInit {
     
@@ -86,6 +86,7 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
     }
     
     public ngAfterContentInit(): void {
+    	console.log("init in NGWizard");
         this.tabs.first.active = true;
     }
     

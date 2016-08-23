@@ -1,9 +1,9 @@
-import { Component, ContentChildren, Input, QueryList, AfterContentInit } from 'angular2/core';
+import { Component, ContentChildren, Input, QueryList, AfterContentInit } from '@angular/core';
 import { Ng2WizardStep } from './ng2-wizard-step.component';
 
 @Component({
     selector: 'ng2-wizard-tab',
-    templateUrl: './app/ng2-wizard/ng2-wizard-tab.component.html'
+    templateUrl: './ng2-wizard-tab.component.html'
 })
 export class Ng2WizardTab implements AfterContentInit {
     
