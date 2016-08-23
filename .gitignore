@@ -17,6 +17,8 @@ node_modules
 *.launch
 .settings/
 
+typings.d.ts
+
 # misc
 /.sass-cache
 /connect.lock
