@@ -12,11 +12,11 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
     // represents the user's config values
     @Input()
     private config: INg2WizardConfig;
-    
+
     private defaultConfig: INg2WizardConfig = {
-        "showNavigationButtons": true,
-        "navigationButtonLocation": "bottom",
-        "preventUnvisitedTabNavigation": false
+        'showNavigationButtons': true,
+        'navigationButtonLocation': 'top',
+        'preventUnvisitedTabNavigation': false
     };
     
     private combinedConfig: INg2WizardConfig = this.defaultConfig;
@@ -70,15 +70,15 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
     
     private get showTopNavigationButtons(): boolean {
         return this.combinedConfig.showNavigationButtons &&
-            (this.combinedConfig.navigationButtonLocation === "top" || this.combinedConfig.navigationButtonLocation === "both");
+            (this.combinedConfig.navigationButtonLocation === 'top' || this.combinedConfig.navigationButtonLocation === 'both');
     }
     
     private get showBottomNavigationButtons(): boolean {
         return this.combinedConfig.showNavigationButtons &&
-            (this.combinedConfig.navigationButtonLocation === "bottom" || this.combinedConfig.navigationButtonLocation === "both");
+            (this.combinedConfig.navigationButtonLocation === 'bottom' || this.combinedConfig.navigationButtonLocation === 'both');
     }
     
-    constructor() { }
+     constructor() { }
     
     public ngOnInit(): void {
         this.verifyConfig();
@@ -86,7 +86,6 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
     }
     
     public ngAfterContentInit(): void {
-    	console.log("init in NGWizard");
         this.tabs.first.active = true;
     }
     
@@ -104,7 +103,7 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
                 this.previous();
                 break;
             default:
-                throw new Error(direction + " is not a valid NavigationDirection");
+                throw new Error(direction + ' is not a valid NavigationDirection');
         }
     }
     
@@ -155,20 +154,20 @@ export class Ng2Wizard implements OnInit, AfterContentInit {
     
     private deactivateAllSteps(): void {
         this.steps.forEach((step) => {
-            step.active =  false
+            step.active =  false;
         });
     }
     
     // check configuration rules and warn user when they have conficting config values
     private verifyConfig(): void {
         if (this.combinedConfig.navigationButtonLocation && !this.combinedConfig.showNavigationButtons) {
-            console.warn('ng2-wizard: config value "navigationButtonLocation" ignored because "showNavigationButtons" is false.');
+            console.warn('ng2-wizard: config value navigationButtonLocation ignored because showNavigationButtons is false.');
         }
     }
-    
+
     // loop through all configuation settings in user input config and over write the defaults
     private combineConfig(): void {
-        for (var key in this.config) {
+        for (let key in this.config) {
             if (this.config.hasOwnProperty(key)) {
                 this.combinedConfig[key] = this.config[key];
             }
@@ -180,3 +179,4 @@ enum NavigationDirection {
     PREVIOUS,
     NEXT
 }
+
